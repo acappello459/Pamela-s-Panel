@@ -12,8 +12,10 @@
     <nav>
       <%if instructor_signed_in?%>
       <li><%= link_to "Sign Out", destroy_instructor_session_path, method: :delete%></li>
+      <li><%= link_to "Edit", edit_instructor_registration_path%></li>
       <%elsif student_signed_in?%>
       <li><%= link_to "Sign Out", destroy_student_session_path, method: :delete%></li>
+      <li><%= link_to "Edit", edit_student_registration_path%></li>
       <%else%>
       <li><%=link_to "Sign Up as Instructor", new_instructor_registration_path %></li>
       <li><%=link_to "Sign Up as Student", new_student_registration_path %></li>
