@@ -7,18 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="../css/main.css">
   </head>
   <body>
-    <nav>
+    <nav class='navbar'>
       <%if instructor_signed_in?%>
-      <li><%= link_to "Sign Out", destroy_instructor_session_path, method: :delete%></li>
-      <li><%= link_to "Edit", edit_instructor_registration_path%></li>
+      <li><%= link_to "Logout", destroy_instructor_session_path, method: :delete%></li>
+      <li><%= link_to "Edit Profile", edit_instructor_registration_path%></li>
+      <li><%=link_to "My Courses"%>
       <%elsif student_signed_in?%>
-      <li><%= link_to "Sign Out", destroy_student_session_path, method: :delete%></li>
-      <li><%= link_to "Edit", edit_student_registration_path%></li>
+      <li><%= link_to "Logout", destroy_student_session_path, method: :delete%></li>
+      <li><%= link_to "Edit Profile", edit_student_registration_path%></li>
+      <li><%=link_to "My Courses"%>
       <%else%>
-      <li><%=link_to "Sign Up as Instructor", new_instructor_registration_path %></li>
-      <li><%=link_to "Sign Up as Student", new_student_registration_path %></li>
+      <li><%=link_to "Instructor", new_instructor_registration_path %></li>
+      <li><%=link_to "Student", new_student_registration_path %></li>
       <%end%>
     </nav>
     <%= yield %>
