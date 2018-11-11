@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pamelapanel</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+    <nav>
+      <%if instructor_signed_in?%>
+      <li><%= link_to "Sign Out", destroy_instructor_session_path, method: :delete%></li>
+      <%elsif student_signed_in?%>
+      <li><%= link_to "Sign Out", destroy_student_session_path, method: :delete%></li>
+      <%else%>
+      <li><%=link_to "Sign Up as Instructor", new_instructor_registration_path %></li>
+      <li><%=link_to "Sign Up as Student", new_student_registration_path %></li>
+      <%end%>
+    </nav>
+    <%= yield %>
+  </body>
+</html>
